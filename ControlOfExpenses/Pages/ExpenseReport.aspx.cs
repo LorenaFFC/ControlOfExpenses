@@ -23,6 +23,12 @@ namespace ControlOfExpenses.Pages
             }
         }
 
+        protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            this.GridView1_SelectedIndexChanged();
+        }
+
         protected void GridView1_SelectedIndexChanged()
         {
             MExpenditure mExpenditure = new MExpenditure();
@@ -101,7 +107,22 @@ namespace ControlOfExpenses.Pages
             GridView1_SelectedIndexChanged();
             //Response.Write("<script> alert('" + rowIndex + "'); </script>");
         }
+        protected void button_revision(object sender, EventArgs e)
+        {
 
-      
+            ImageButton ibtn1 = sender as ImageButton;
+            int rowIndex = Convert.ToInt32(ibtn1.Attributes["RowIndex"]);
+
+
+            var conection = ConnectionManager.GetSqlConnection();
+            string query = "UPDATE [Financial].[dbo].[EXPENDITURE] SET   [STATUS] = 'Revisão' WHERE ID = @ID";
+            SqlCommand sqlCmd = new SqlCommand(query, conection);
+            sqlCmd.Parameters.AddWithValue("@ID", Convert.ToInt32(rowIndex));
+            sqlCmd.ExecuteNonQuery();
+            GridView1.EditIndex = -1;
+            GridView1_SelectedIndexChanged();
+            //Response.Write("<script> alert('" + rowIndex + "'); </script>");
+        }
+
     }
 }

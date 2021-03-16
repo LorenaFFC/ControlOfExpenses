@@ -10,7 +10,8 @@
         OnRowUpdating="GridView1_RowUpdating"
         OnRowEditing="GridView1_RowEditing"
         OnRowCancelingEdit="GridView1_RowCancelingEdit"
-        BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" >
+        OnPageIndexChanging="OnPageIndexChanging"
+        BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AllowPaging="TRUE" PageSize="3" >
         <FooterStyle BackColor="White" ForeColor="#000066" />
         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
@@ -128,7 +129,8 @@
                 <ItemTemplate>
                     <asp:ImageButton ImageUrl="~/Images/edit.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px" />
                      <asp:ImageButton ImageUrl="~/Images/approved.png" runat="server"  RowIndex='<%# GridView1.DataKeys[Container.DisplayIndex].Value %>' ToolTip="Aprovar" Width="20px" Height="20px" OnClick="button_approved" />
-                     <asp:ImageButton ImageUrl="~/Images/deny.png" runat="server"  RowIndex='<%# GridView1.DataKeys[Container.DisplayIndex].Value %>' ToolTip="Aprovar" Width="20px" Height="20px" OnClick="button_deny" />
+                     <asp:ImageButton ImageUrl="~/Images/deny.png" runat="server"  RowIndex='<%# GridView1.DataKeys[Container.DisplayIndex].Value %>' ToolTip="Reprovar" Width="20px" Height="20px" OnClick="button_deny" />
+                    <asp:ImageButton ImageUrl="~/Images/time.png" runat="server"  RowIndex='<%# GridView1.DataKeys[Container.DisplayIndex].Value %>' ToolTip="Revisão" Width="20px" Height="20px" OnClick="button_revision" />
             
                 </ItemTemplate>
                 <EditItemTemplate>
