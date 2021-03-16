@@ -17,14 +17,14 @@ namespace ControlOfExpenses.Entities
         public string Form_Payment { get; set; }
         public string PersonName { get; set; }
         public string Comment { get; set; }
-        public bool Replay { get; set; }
+        public string Replay { get; set; }
 
         public StatusAproval statusAproval { get; set; }
 
         public Expenditure()
         {
         }
-        public Expenditure(String classificationExpenditure, DateTime expenditure_Date, decimal unitaty_Value, int amount, string form_Payment, string personName, string comment, bool replay, StatusAproval statusAproval)
+        public Expenditure(String classificationExpenditure, DateTime expenditure_Date, decimal unitaty_Value, int amount, string form_Payment, string personName, string comment, string replay, StatusAproval statusAproval)
         {
             ClassificationExpenditure = classificationExpenditure;
             Expenditure_Date = expenditure_Date;

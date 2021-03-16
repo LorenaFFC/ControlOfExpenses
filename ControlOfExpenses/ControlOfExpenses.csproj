@@ -122,6 +122,11 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Images\cancel.png" />
+    <Content Include="Images\delete.png" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\save.png" />
+    <Content Include="Pages\ExpenseReport.aspx" />
     <Content Include="Pages\RegistrationExpenses.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -168,6 +173,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MExpenditure.cs" />
+    <Compile Include="Pages\ExpenseReport.aspx.cs">
+      <DependentUpon>ExpenseReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ExpenseReport.aspx.designer.cs">
+      <DependentUpon>ExpenseReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RegistrationExpenses.aspx.cs">
       <DependentUpon>RegistrationExpenses.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

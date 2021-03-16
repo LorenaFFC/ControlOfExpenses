@@ -38,10 +38,40 @@ namespace ControlOfExpenses
             ConnectionManager.CloseConnection();
         }
 
-        public DataTable classificationExpenditures()
+        /*public void UpdateTable(Expenditure expenditure)
+        {
+            string CommandText = "UPDATE [dbo].[EXPENDITURE]" +
+                                 " SET[CLASSIFICATION] = @CLASSIFICATION"
+                                + ",[EXPENDITURE_DATE] = @EXPENDITURE_DATE"
+                                + ",[UNITARY_VALUE] = @UNITARY_VALUE"
+                                + ",[AMOUNT] = @AMOUNT"
+                                + ",[TOTAL_VALUE] = @TOTAL_VALUE"
+                                + ",[FORM_PAYMENT] = @FORM_PAYMENT"
+                                + ",[PERSON_NAME] = @PERSON_NAME"
+                                + ",[COMMENT] = @COMMENT"
+                                + ",[REPLAY] = @REPLAY"
+                                + ",[STATUS] = @STATUS"
+                                + "WHERE [ID] =@ID";
+
+            SqlParameter[] parameterList = {   new SqlParameter("@CLASSIFICATION",expenditure.ClassificationExpenditure),
+                                               new SqlParameter("@EXPENDITURE_DATE",expenditure.Expenditure_Date),
+                                               new SqlParameter("@UNITARY_VALUE",expenditure.Unitaty_Value),
+                                               new SqlParameter("@AMOUNT",expenditure.Amount),
+                                               new SqlParameter("@TOTAL_VALUE",expenditure.ValorTotal),
+                                               new SqlParameter("@FORM_PAYMENT",expenditure.Form_Payment),
+                                               new SqlParameter("@PERSON_NAME",expenditure.PersonName),
+                                               new SqlParameter("@COMMENT",expenditure.Comment),
+                                               new SqlParameter("@REPLAY",expenditure.Replay ),
+                                               new SqlParameter("@STATUS",expenditure.statusAproval.ToString() )};
+
+            ConnectionManager.ExecuteNonQuery(CommandText, parameterList);
+            ConnectionManager.CloseConnection();
+        }*/
+
+        public DataTable ReportExpense()
         {
             ConnectionManager.GetSqlConnection();
-            string commandQuery = "SELECT NAME FROM Financial.dbo.CLASSIFICATION_EXPENDITURE";
+            string commandQuery = "SELECT * FROM Financial.dbo.EXPENDITURE";
             DataTable dt= ConnectionManager.ExecuteQuery(commandQuery);
             return dt;
         }

@@ -33,6 +33,15 @@ namespace ControlOfExpenses.Pages
 
         protected void cadastro_Click(object sender, EventArgs e)
         {
+            string check;
+            if (txt_REPLAY.Checked == true)
+            {
+                check = "Sim";
+            }
+            else
+            {
+                check = "Não";
+            }
             MExpenditure mExpenditure = new MExpenditure();
             string classification = selectclassification.Value.Replace('_', ' ');
             string formPayment = selectformPayment.Value.Replace('_', ' ');
@@ -45,7 +54,7 @@ namespace ControlOfExpenses.Pages
             cd.Form_Payment = formPayment;
             cd.PersonName = txt_PERSON_NAME.Text;
             cd.Comment = TextBox1.Text;
-            cd.Replay = txt_REPLAY.Checked;
+            cd.Replay = check;
             cd.statusAproval = StatusAproval.Aguardando_Aprovação;
 
             mExpenditure.InsertEXPENDITURE(cd);
