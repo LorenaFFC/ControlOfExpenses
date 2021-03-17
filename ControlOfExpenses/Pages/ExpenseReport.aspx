@@ -4,14 +4,38 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false"
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+           
+            Mês: <asp:TextBox  class="form-control col-md-2" type="number" step="0" min="1" max="12" ID="month" runat="server" />
+            Ano: <asp:TextBox class="form-control col-md-2" type="number"  step="0" min="2020" ID="year" runat="server" />
+           
+            Reembolso: <asp:DropDownList class="form-control col-md-1" runat="server" AutoPostBack="true" ID="REPLAY">
+                            <asp:ListItem  Text="Sim" />
+                            <asp:ListItem   Text="Não" />
+                        </asp:DropDownList>
+            Status: <asp:DropDownList class="form-control col-md-2" runat="server" AutoPostBack="true" ID="STATUS">
+                        <asp:ListItem Text="Aprovada" />
+                        <asp:ListItem Text="Reprovada" />
+                        <asp:ListItem Text="Revisão" />
+                    </asp:DropDownList>
+            <asp:Button class="btn btn-outline-success" runat="server" Text="Aplicar" OnClick="Unnamed1_Click" />
+            <asp:Button class="btn btn-outline-secondary" runat="server" Text="Limpar" OnClick="Unnamed2_Click" />
+            <br />
+            <br />
+                </div>
+      
+    </nav>
+    <h3>Despesas </h3>
+
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-condensed" 
         DataKeyNames="ID"
         ShowHeaderWhenEmpty="true"
         OnRowUpdating="GridView1_RowUpdating"
         OnRowEditing="GridView1_RowEditing"
         OnRowCancelingEdit="GridView1_RowCancelingEdit"
         OnPageIndexChanging="OnPageIndexChanging"
-        BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AllowPaging="TRUE" PageSize="3" >
+        BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AllowPaging="TRUE" PageSize="3" GridLines="None" HorizontalAlign="Justify" >
         <FooterStyle BackColor="White" ForeColor="#000066" />
         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
@@ -26,9 +50,6 @@
                 <ItemTemplate>
                     <asp:Label Text='<%# Eval("CLASSIFICATION") %>' runat="server" />
                 </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="txtClassification" Text='<%# Eval("CLASSIFICATION") %>' runat="server" />
-                </EditItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtClassificationFooter" runat="server" />
                 </FooterTemplate>
@@ -49,7 +70,7 @@
                     <asp:Label Text='<%# Eval("UNITARY_VALUE") %>' runat="server" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:TextBox ID="txtvalueUnitary"  type="number" step="0.01" min="0" Text='<%# Eval("UNITARY_VALUE") %>' runat="server" />
+                    <asp:TextBox ID="txtvalueUnitary" type="number" step="0.01" min="0" Text='<%# Eval("UNITARY_VALUE") %>' runat="server" />
                 </EditItemTemplate>
                 <FooterTemplate>
                     <asp:TextBox ID="txtvalueUnitaryFooter" runat="server" />
@@ -128,10 +149,10 @@
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:ImageButton ImageUrl="~/Images/edit.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px" />
-                     <asp:ImageButton ImageUrl="~/Images/approved.png" runat="server"  RowIndex='<%# GridView1.DataKeys[Container.DisplayIndex].Value %>' ToolTip="Aprovar" Width="20px" Height="20px" OnClick="button_approved" />
-                     <asp:ImageButton ImageUrl="~/Images/deny.png" runat="server"  RowIndex='<%# GridView1.DataKeys[Container.DisplayIndex].Value %>' ToolTip="Reprovar" Width="20px" Height="20px" OnClick="button_deny" />
-                    <asp:ImageButton ImageUrl="~/Images/time.png" runat="server"  RowIndex='<%# GridView1.DataKeys[Container.DisplayIndex].Value %>' ToolTip="Revisão" Width="20px" Height="20px" OnClick="button_revision" />
-            
+                    <asp:ImageButton ImageUrl="~/Images/approved.png" runat="server" RowIndex='<%# GridView1.DataKeys[Container.DisplayIndex].Value %>' ToolTip="Aprovar" Width="20px" Height="20px" OnClick="button_approved" />
+                    <asp:ImageButton ImageUrl="~/Images/deny.png" runat="server" RowIndex='<%# GridView1.DataKeys[Container.DisplayIndex].Value %>' ToolTip="Reprovar" Width="20px" Height="20px" OnClick="button_deny" />
+                    <asp:ImageButton ImageUrl="~/Images/time.png" runat="server" RowIndex='<%# GridView1.DataKeys[Container.DisplayIndex].Value %>' ToolTip="Revisão" Width="20px" Height="20px" OnClick="button_revision" />
+
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:ImageButton ImageUrl="~/Images/save.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px" />
@@ -146,7 +167,5 @@
 
 
 
-
-
-
+      
 </asp:Content>

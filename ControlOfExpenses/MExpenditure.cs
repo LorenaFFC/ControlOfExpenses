@@ -76,7 +76,45 @@ namespace ControlOfExpenses
             return dt;
         }
 
-    
+        public DataSet ReportExpenseFilter(int month, int year,  string replay ,string status)
+        {
+            
+            string query = "Financial.dbo.GetReportExpenditure";
+            SqlCommand com = new SqlCommand(query, ConnectionManager.GetSqlConnection());
+            com.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter param = com.CreateParameter();
+            param.ParameterName = "@month";
+            param.Value = month;
+            param.DbType = DbType.Int32;
+            com.Parameters.Add(param);
+
+            param = com.CreateParameter();
+            param.ParameterName = "@year";
+            param.Value = year;
+            param.DbType = DbType.Int32;
+            com.Parameters.Add(param);
+
+            param = com.CreateParameter();
+            param.ParameterName = "@replay";
+            param.Value = replay;
+            param.DbType = DbType.String;
+            com.Parameters.Add(param);
+
+            param = com.CreateParameter();
+            param.ParameterName = "@status";
+            param.Value = status;
+            param.DbType = DbType.String;
+            com.Parameters.Add(param);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            DataSet dset = new DataSet();
+            adapter.Fill(dset, "t1");
+            var result = com.ExecuteReader();
+            return dset;
+        }
+
 
 
     }
