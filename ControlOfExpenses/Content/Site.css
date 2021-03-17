@@ -17,7 +17,13 @@ select,
 textarea {
     max-width: 280px;
 }
-
+form label {
+    display: block;
+    font-size: 20px;
+    margin: 20px 0 10px;
+    font-family: 'Gotu', sans-serif;
+    font-weight: bold;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

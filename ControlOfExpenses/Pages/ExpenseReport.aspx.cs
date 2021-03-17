@@ -142,6 +142,9 @@ namespace ControlOfExpenses.Pages
             GridView1.DataBind();
         }
 
-
+        protected void Unnamed3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RegistrationExpenses.aspx");
+        }
     }
 }

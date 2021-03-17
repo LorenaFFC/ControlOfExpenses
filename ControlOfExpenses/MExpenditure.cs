@@ -72,13 +72,19 @@ namespace ControlOfExpenses
         {
             ConnectionManager.GetSqlConnection();
             string commandQuery = "SELECT * FROM Financial.dbo.EXPENDITURE";
-            DataTable dt= ConnectionManager.ExecuteQuery(commandQuery);
+            DataTable dt = ConnectionManager.ExecuteQuery(commandQuery);
             return dt;
         }
-
-        public DataSet ReportExpenseFilter(int month, int year,  string replay ,string status)
+        public DataTable ReportExpenseRel()
         {
-            
+            ConnectionManager.GetSqlConnection();
+            string commandQuery = "SELECT 	FE.CLASSIFICATION AS CLASSIFICAÇÃO,FE.PERSON_NAME AS PESSOA,FE.STATUS AS STATUS,FE.REPLAY AS REEMBOLSO,SUM(FE.TOTAL_VALUE) AS VALOR FROM  Financial..EXPENDITURE FE WITH(NOLOCK)	GROUP BY FE.CLASSIFICATION,FE.PERSON_NAME,FE.STATUS,FE.REPLAY";
+            DataTable dt = ConnectionManager.ExecuteQuery(commandQuery);
+            return dt;
+        }
+        public DataSet ReportExpenseFilter(int month, int year, string replay, string status)
+        {
+
             string query = "Financial.dbo.GetReportExpenditure";
             SqlCommand com = new SqlCommand(query, ConnectionManager.GetSqlConnection());
             com.CommandType = CommandType.StoredProcedure;
@@ -116,6 +122,35 @@ namespace ControlOfExpenses
         }
 
 
+        public DataSet RelatorioDespesasAgregado(DateTime DT_INICIAL, DateTime DT_FINAL, string NAME)
+        {
 
+            string query = "Financial.dbo.GetRelReembolsoDespesas";
+            SqlCommand com = new SqlCommand(query, ConnectionManager.GetSqlConnection());
+            com.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter param = com.CreateParameter();
+            param.ParameterName = "@DT_INICIAL";
+            param.Value = DT_INICIAL;
+            com.Parameters.Add(param);
+
+            param = com.CreateParameter();
+            param.ParameterName = "@DT_FINAL";
+            param.Value = DT_FINAL;
+            com.Parameters.Add(param);
+
+            param = com.CreateParameter();
+            param.ParameterName = "@NAME";
+            param.Value = NAME;
+            com.Parameters.Add(param);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            DataSet dbRelatorio = new DataSet();
+            adapter.Fill(dbRelatorio, "t1");
+            var result = com.ExecuteReader();
+            return dbRelatorio;
+
+        }
     }
 }

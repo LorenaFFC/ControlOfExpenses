@@ -59,7 +59,7 @@
                     <br /><br />
                     <div class="mb-3">
                         <asp:Button ID="INSERT" runat="server" Text="Cadastrar" OnClick="cadastro_Click"  class="btn btn-success" />
-                        <asp:Button ID="Button2" runat="server" Text="Cancelar" class="btn btn-light"/>
+                        <asp:Button ID="Button2" runat="server" Text="Cancelar" class="btn btn-light" OnClick="Button2_Click"/>
                     </div>
                 </fieldset>
             </form>

@@ -127,6 +127,7 @@
     <Content Include="Images\edit.png" />
     <Content Include="Images\save.png" />
     <Content Include="Pages\ExpenseReport.aspx" />
+    <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\RegistrationExpenses.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -179,6 +180,13 @@
     </Compile>
     <Compile Include="Pages\ExpenseReport.aspx.designer.cs">
       <DependentUpon>ExpenseReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegistrationExpenses.aspx.cs">
       <DependentUpon>RegistrationExpenses.aspx</DependentUpon>

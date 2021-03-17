@@ -26,7 +26,12 @@
                 </div>
       
     </nav>
-    <h3>Despesas </h3>
+    <br />
+    <h4 class="card-title">Despesas </h4>
+    <div class="col-lg-12" style="text-align: right;">
+     <asp:Button class="btn btn-primary"  runat="server" Text="NOVO" OnClick="Unnamed3_Click" />
+</div>
+   <br />
 
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-condensed" 
         DataKeyNames="ID"

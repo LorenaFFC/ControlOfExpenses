@@ -62,6 +62,11 @@ namespace ControlOfExpenses.Pages
             //mExpenditure.InsertEXPENDITURE(classification, DateTime.Parse(txt_EXPENDITURE_DATE.Text), double.Parse(txt_UNITARY_VALUE.Text, CultureInfo.InvariantCulture), int.Parse(txt_AMOUNT.Text), formPayment, txt_PERSON_NAME.Text, TextBox1.Text, txt_REPLAY.Checked, "Aguardando Aprovação");
         }
 
-      
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            
+                Response.Redirect("ExpenseReport.aspx");
+            
+        }
     }
 }
